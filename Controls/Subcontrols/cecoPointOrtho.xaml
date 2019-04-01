@@ -1,0 +1,14 @@
+﻿<Thumb x:Class="Celery.Controls.Subcontrols.cecoPointOrtho"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celery.Controls.Subcontrols"
+             mc:Ignorable="d" 
+             d:DesignHeight="17" d:DesignWidth="17" DragDelta="Thumb_DragDelta">
+    <Thumb.Template>
+        <ControlTemplate>
+            <Ellipse Width="17" Height="17" StrokeThickness="4" Fill="WhiteSmoke" Stroke="DimGray"/>
+        </ControlTemplate>
+    </Thumb.Template>
+</Thumb>

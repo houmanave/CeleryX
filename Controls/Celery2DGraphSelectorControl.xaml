@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celery.Controls"
+             xmlns:conv="clr-namespace:Celery.Converters"
+             xmlns:UI="clr-namespace:Celery.UI" x:Class="Celery.Controls.Celery2DGraphSelectorControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="610" d:DesignWidth="560">
+    <UserControl.DataContext>
+        <UI:TwoDGraphItemSelector/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <conv:DoubleToStringConverter x:Key="DoubleToStringConverter"/>
+        <conv:BorderClipConverter x:Key="BorderClipConv" />
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="45,10,15,85" Background="#B2DEDEDE" Width="500" Height="500">
+            <Canvas x:Name="thisCanvas" ClipToBounds="True" Margin="0" />
+        </Border>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="20" Margin="10,0,0,10" TextWrapping="Wrap" Text="X-Axis" VerticalAlignment="Bottom" Width="45"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="20" Margin="60,0,0,10" VerticalAlignment="Bottom" Width="70" ItemsSource="{Binding Lilabels}" SelectedValuePath="Key" DisplayMemberPath="Key" SelectedValue="{Binding LabelAtX}"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="20" Margin="145,0,0,10" TextWrapping="Wrap" Text="Y-Axis" VerticalAlignment="Bottom" Width="35"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="20" Margin="185,0,0,10" VerticalAlignment="Bottom" Width="70" DisplayMemberPath="Key" SelectedValuePath="Key" ItemsSource="{Binding Lilabels}" SelectedValue="{Binding LabelAtY}"/>
+        <TextBlock x:Name="textBlock2" Height="20" Margin="0,0,115,10" TextWrapping="Wrap" Text="Show Every" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Visibility="Hidden"/>
+        <Button x:Name="button" Content="-" HorizontalAlignment="Right" Height="20" Margin="0,0,200,10" VerticalAlignment="Bottom" Width="25" Visibility="Hidden"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Right" Height="20" Margin="0,0,80,10" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Width="35" Visibility="Hidden"/>
+        <Button x:Name="button1" Content="+" HorizontalAlignment="Right" Height="20" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="25" Visibility="Hidden"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Right" Height="20" Margin="0,0,40,10" TextWrapping="Wrap" Text="Items" VerticalAlignment="Bottom" Width="35" Visibility="Hidden"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Height="25" Margin="145,515,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="0"/>
+        <TextBlock x:Name="textBlock5" Height="25" Margin="185,0,150,55" TextWrapping="Wrap" Text="{Binding LabelAtX}" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Height="25" Margin="45,0,0,55" TextWrapping="NoWrap" Text="{Binding MinValueAtX, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Bottom" Width="100" />
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Right" Height="25" Margin="0,0,15,55" TextWrapping="NoWrap" Text="{Binding MaxValueAtX, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Bottom" Width="115" TextAlignment="Right" />
+        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Height="20" Margin="20,0,0,95" TextWrapping="Wrap" Text="{Binding MinValueAtY, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Bottom" Width="135">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Height="20" Margin="20,20,0,0" TextWrapping="Wrap" Text="{Binding MaxValueAtY, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Top" Width="157" TextAlignment="Right">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock x:Name="textBlock10" HorizontalAlignment="Left" Height="20" Margin="20,175,0,0" TextWrapping="Wrap" Text="{Binding LabelAtY}" VerticalAlignment="Top" Width="195" TextAlignment="Center" FontWeight="Bold">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="270" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+    </Grid>
+</UserControl>

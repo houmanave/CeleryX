@@ -1,0 +1,42 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Converters="clr-namespace:Celery.Converters" x:Class="Celery.Controls.CelerySliderControl" 
+             mc:Ignorable="d" Height="95" Width="289">
+    <UserControl.Resources>
+        <Converters:DoubleToStringConverter x:Key="DoubleToStringConverter"/>
+        <Converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Slider x:Name="drawSlider" Height="27" Margin="10,10,10,0" VerticalAlignment="Top"
+                SmallChange="1" LargeChange="20"
+                Minimum="1" Maximum="500" Value="{Binding SliderValue}" />
+        <!--
+        <Slider x:Name="drawSlider" Height="27" Margin="10,10,10,0" VerticalAlignment="Top"
+                SmallChange="1" LargeChange="{Binding SliderLargeChange, Converter={StaticResource DoubleToStringConverter}}"
+                Minimum="0" Maximum="{Binding SliderMaximum}" Value="{Binding SliderValue}" />
+            -->
+        <TextBlock x:Name="minvalTextBlock" HorizontalAlignment="Left" Height="21" Margin="10,42,0,0" TextWrapping="Wrap"
+                   Text="{Binding Minval, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Top" Width="50"
+                   />
+        <TextBlock x:Name="maxvalTextBlock" HorizontalAlignment="Right" Height="20" Margin="0,43,9,0" TextWrapping="Wrap"
+                   Text="{Binding Maxval, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Top" Width="50" TextAlignment="Right"/>
+        <TextBlock x:Name="outputviewTextBlock" Height="22" Margin="65,43,64,0" TextWrapping="Wrap" 
+                   Text="{Binding OutputviewValue, Converter={StaticResource DoubleToStringConverter}}" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold"
+                   />
+        <RadioButton Content="Integer" HorizontalAlignment="Left" Height="20" Margin="10,0,0,0" 
+                     VerticalAlignment="Bottom" Width="61"
+                     IsChecked="{Binding IsInteger}"/>
+        <RadioButton Content="Number" HorizontalAlignment="Left" Height="20" Margin="76,0,0,0" 
+                     VerticalAlignment="Bottom"
+                     Width="67"
+                     IsChecked="{Binding IsNumber}"/>
+        <ComboBox HorizontalAlignment="Left" Height="25" Margin="148,0,0,0" VerticalAlignment="Bottom" Width="41"
+                  IsEnabled="{Binding IsInteger, Converter={StaticResource InverseBooleanConverter}}"
+                  ItemsSource="{Binding PrecisionCollection}"
+                  SelectedItem="{Binding SliderPrecision, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Height="20" Margin="194,0,10,0" TextWrapping="Wrap" Text="decimal places" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>
